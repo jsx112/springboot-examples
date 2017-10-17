@@ -24,9 +24,4 @@
         <module>springboot-demo</module>
         <module>springboot-rabbitmq</module>
     </modules>
-
-
-    t_agent_rebate_rule
-
-
 </project>

@@ -3,21 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.jsx</groupId>
-    <artifactId>jsx.springboot.shiro</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>com.springboot.shiro</artifactId>
     <packaging>jar</packaging>
-
-    <name>spring-boot-shiro-stateless</name>
-    <url>http://maven.apache.org</url>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-    </properties>
-
-
     <!--
        spring boot 父节点依赖,
        引入这个之后相关的引入就不需要添加version配置，
@@ -28,8 +15,13 @@
         <groupId>study</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <name>spring-boot-shiro-stateless</name>
+    <url>http://maven.apache.org</url>
 
-
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+    </properties>
 
 <dependencies>
 

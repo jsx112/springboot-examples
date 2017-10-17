@@ -4,20 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>swagger</groupId>
-    <artifactId>jsx.swagger</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>com.springboot.swagger</artifactId>
     <packaging>jar</packaging>
-
-    <name>SpringbootSwagger</name>
-    <url>http://maven.apache.org</url>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- jdk版本号，angel在这里使用1.8，大家修改为大家本地配置的jdk版本号即可 -->
-        <java.version>1.8</java.version>
-    </properties>
-
         <!--
                spring boot 父节点依赖,
                引入这个之后相关的引入就不需要添加version配置，
@@ -28,7 +16,14 @@
         <groupId>study</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <name>SpringbootSwagger</name>
+    <url>http://maven.apache.org</url>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- jdk版本号，angel在这里使用1.8，大家修改为大家本地配置的jdk版本号即可 -->
+        <java.version>1.8</java.version>
+    </properties>
 
     <dependencies>
         <!-- spring boot web支持：mvc,aop... -->

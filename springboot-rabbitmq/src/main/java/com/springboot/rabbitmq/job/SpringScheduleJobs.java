@@ -1,10 +1,11 @@
-package com.springboot.rabbitmq;
+package com.springboot.rabbitmq.job;
 
-import com.springboot.rabbitmq.service.BusinessSenderService;
+import java.text.SimpleDateFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.text.SimpleDateFormat;
+import com.springboot.rabbitmq.service.BusinessSenderService;
 
 /**
  * 定时任务公共能处理类，如果需要新的定时任务，可以增加方法和时间。

@@ -1,0 +1,9 @@
+/.idea
+/logs
+target/
+# Package Files #
+*.log
+*.war
+*.iml
+*.class
+

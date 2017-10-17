@@ -1,0 +1,9 @@
+server:
+  port: 8443                           # https的端口设置为443
+  ssl:
+    key-store: keystore.p12           # keystore配置文件路径
+    key-store-type: PKCS12           # keystore类型
+    key-alias: tomcat                 # 设置的别名
+    key-password: test123456          # 访问密码
+http:
+  port: 8080

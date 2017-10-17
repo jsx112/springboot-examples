@@ -92,7 +92,7 @@
             <artifactId>sharding-jdbc-config-spring</artifactId>
             <version>${sharding.jdbc.version}</version>
         </dependency>
-        <jobdler-job-core -->
+        <!-- jobdler-job-core -->
         <dependency>
             <groupId>com.xuxueli</groupId>
             <artifactId>xxl-job-core</artifactId>

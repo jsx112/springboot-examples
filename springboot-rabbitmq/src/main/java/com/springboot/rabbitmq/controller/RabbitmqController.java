@@ -20,7 +20,7 @@ public class RabbitmqController {
     private BusinessSenderService businessSenderService;
   
     @RequestMapping("/sendstr")
-    @ApiOperation(value="发送字符串消息", notes="发送字符串消息",httpMethod = "POST",consumes="application/x-www-form-urlencoded", response = String.class)
+    @ApiOperation(value="发送字符串消息", notes="发送字符串消息",httpMethod = "POST", response = String.class)
     public String sendStr(String msg) {
         businessSenderService.sendMessage(UUID.randomUUID().toString(),msg);
         return "Sendstr OK.";

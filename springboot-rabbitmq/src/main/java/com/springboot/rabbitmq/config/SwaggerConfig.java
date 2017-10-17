@@ -7,9 +7,13 @@ import org.springframework.http.ResponseEntity;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
+import springfox.documentation.service.VendorExtension;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
 * Swagger配置类:
@@ -62,7 +66,7 @@ public class SwaggerConfig {
                 new Contact("测试人", "", ""),//作者
                 "一只小蚂蚁",//链接显示文字
                 "http://baidu.com"//网站链接
-        );
+        ,new ArrayList<>());
         return apiInfo;
     }
 

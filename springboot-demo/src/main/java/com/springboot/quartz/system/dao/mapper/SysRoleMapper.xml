@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.springboot.quartz.system.dao.mybatis.SysRoleDao">
+
+	<resultMap id="customResultMap" type="com.springboot.quartz.system.entity.SysRole">
+        <result property="id" column="id"/>
+        <result property="state" column="state"/>
+        <result property="roleCode" column="role_code"/>
+        <result property="roleName" column="role_name"/>
+        <result property="description" column="description"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createUid" column="create_uid"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateUid" column="update_uid"/>
+	</resultMap>
+	
+	<sql id="columns">
+        	id,
+        	state,
+        	role_code,
+        	role_name,
+        	description,
+        	create_time,
+        	create_uid,
+        	update_time,
+        	update_uid
+	</sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_sys_role (
+        	id ,
+        	state ,
+        	role_code ,
+        	role_name ,
+        	description ,
+        	create_time ,
+        	create_uid ,
+        	update_time ,
+        	update_uid 
+        ) VALUES (
+        	#{id} ,
+        	#{state} ,
+        	#{roleCode} ,
+        	#{roleName} ,
+        	#{description} ,
+        	#{createTime} ,
+        	#{createUid} ,
+        	#{updateTime} ,
+        	#{updateUid} 
+        )
+	</insert>
+    
+	<update id="update" >
+        UPDATE t_sys_role SET
+	        state = #{state} ,
+	        role_code = #{roleCode} ,
+	        role_name = #{roleName} ,
+	        description = #{description} ,
+	        create_time = #{createTime} ,
+	        create_uid = #{createUid} ,
+	        update_time = #{updateTime} ,
+	        update_uid = #{updateUid} 
+        WHERE 
+	        id = #{id} 
+	</update>
+
+    <delete id="deleteById">
+        DELETE FROM t_sys_role WHERE
+        id = #{id} 
+    </delete>
+    
+    <select id="getById"  parameterType="java.lang.String" resultMap="customResultMap">
+		SELECT <include refid="columns" />
+		    FROM t_sys_role 
+	        WHERE 
+		        id = #{id} 
+	</select>
+	
+	<sql id="query_conditions">
+		<where>	      				
+	       <if test="id != null and id != '' ">
+				AND id = #{id}
+			</if>
+	       <if test="state != null and state != '' ">
+				AND state = #{state}
+			</if>
+	       <if test="roleCode != null and roleCode != '' ">
+				AND role_code = #{roleCode}
+			</if>
+	       <if test="roleName != null and roleName != '' ">
+				AND role_name = #{roleName}
+			</if>
+	       <if test="description != null and description != '' ">
+				AND description = #{description}
+			</if>
+	       <if test="createTimeBegin != null">
+				AND create_time >= #{createTimeBegin}
+		   </if>
+		   <if test="createTimeEnd != null">
+				AND create_time &lt;= #{createTimeEnd}
+		   </if>
+	       <if test="createUid != null and createUid != '' ">
+				AND create_uid = #{createUid}
+			</if>
+	       <if test="updateTimeBegin != null">
+				AND update_time >= #{updateTimeBegin}
+		   </if>
+		   <if test="updateTimeEnd != null">
+				AND update_time &lt;= #{updateTimeEnd}
+		   </if>
+	       <if test="updateUid != null and updateUid != '' ">
+				AND update_uid = #{updateUid}
+			</if>
+		</where>
+	</sql>
+		
+    <select id="getTotalCount" parameterType="com.springboot.quartz.system.entity.SysRole" resultType="long">
+        SELECT count(*) FROM t_sys_role 
+		<include refid="query_conditions"/>    
+    </select>
+    
+    <!--查询列表，可以传分页参数-->
+    <select id="getList" parameterType="com.springboot.quartz.system.entity.SysRole" resultMap="customResultMap">
+    	SELECT <include refid="columns" />
+	    FROM t_sys_role 
+		<include refid="query_conditions"/>
+
+    </select>
+
+	
+</mapper>
+

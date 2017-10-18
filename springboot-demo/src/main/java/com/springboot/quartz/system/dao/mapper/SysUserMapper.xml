@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.springboot.quartz.system.dao.mybatis.SysUserDao">
+
+	<resultMap id="customResultMap" type="com.springboot.quartz.system.entity.SysUser">
+        <result property="id" column="id"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="account" column="account"/>
+        <result property="password" column="password"/>
+        <result property="salt" column="salt"/>
+        <result property="state" column="state"/>
+        <result property="type" column="type"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createUid" column="create_uid"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateUid" column="update_uid"/>
+	</resultMap>
+	
+	<sql id="columns">
+        	id,
+        	nick_name,
+        	account,
+        	password,
+        	salt,
+        	state,
+        	type,
+        	create_time,
+        	create_uid,
+        	update_time,
+        	update_uid
+	</sql>
+
+	<insert id="insert"  useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_sys_user (
+        	id ,
+        	nick_name ,
+        	account ,
+        	password ,
+        	salt ,
+        	state ,
+        	type ,
+        	create_time ,
+        	create_uid ,
+        	update_time ,
+        	update_uid 
+        ) VALUES (
+        	#{id} ,
+        	#{nickName} ,
+        	#{account} ,
+        	#{password} ,
+        	#{salt} ,
+        	#{state} ,
+        	#{type} ,
+        	#{createTime} ,
+        	#{createUid} ,
+        	#{updateTime} ,
+        	#{updateUid} 
+        )
+	</insert>
+    
+	<update id="update" >
+        UPDATE t_sys_user SET
+	        nick_name = #{nickName} ,
+	        account = #{account} ,
+	        password = #{password} ,
+	        salt = #{salt} ,
+	        state = #{state} ,
+	        type = #{type} ,
+	        create_time = #{createTime} ,
+	        create_uid = #{createUid} ,
+	        update_time = #{updateTime} ,
+	        update_uid = #{updateUid} 
+        WHERE 
+	        id = #{id} 
+	</update>
+
+    <delete id="deleteById">
+        DELETE FROM t_sys_user WHERE
+        id = #{id} 
+    </delete>
+    
+    <select id="getById"  parameterType="java.lang.String" resultMap="customResultMap">
+		SELECT <include refid="columns" />
+		    FROM t_sys_user 
+	        WHERE 
+		        id = #{id} 
+	</select>
+	
+	<sql id="query_conditions">
+		<where>	      				
+	       <if test="id != null and id != '' ">
+				AND id = #{id}
+			</if>
+	       <if test="nickName != null and nickName != '' ">
+				AND nick_name = #{nickName}
+			</if>
+	       <if test="account != null and account != '' ">
+				AND account = #{account}
+			</if>
+	       <if test="password != null and password != '' ">
+				AND password = #{password}
+			</if>
+	       <if test="salt != null and salt != '' ">
+				AND salt = #{salt}
+			</if>
+	       <if test="state != null and state != '' ">
+				AND state = #{state}
+			</if>
+	       <if test="type != null and type != '' ">
+				AND type = #{type}
+			</if>
+	       <if test="createTimeBegin != null">
+				AND create_time >= #{createTimeBegin}
+		   </if>
+		   <if test="createTimeEnd != null">
+				AND create_time &lt;= #{createTimeEnd}
+		   </if>
+	       <if test="createUid != null and createUid != '' ">
+				AND create_uid = #{createUid}
+			</if>
+	       <if test="updateTimeBegin != null">
+				AND update_time >= #{updateTimeBegin}
+		   </if>
+		   <if test="updateTimeEnd != null">
+				AND update_time &lt;= #{updateTimeEnd}
+		   </if>
+	       <if test="updateUid != null and updateUid != '' ">
+				AND update_uid = #{updateUid}
+			</if>
+		</where>
+	</sql>
+		
+    <select id="getTotalCount" parameterType="com.springboot.quartz.system.entity.SysUser" resultType="long">
+        SELECT count(*) FROM t_sys_user 
+		<include refid="query_conditions"/>    
+    </select>
+    
+    <!--查询列表，可以传分页参数-->
+    <select id="getList" parameterType="com.springboot.quartz.system.entity.SysUser" resultMap="customResultMap">
+    	SELECT <include refid="columns" />
+	    FROM t_sys_user 
+		<include refid="query_conditions"/>
+
+    </select>
+
+    <select id="getByAccount" resultMap="customResultMap" parameterType="String">
+	    SELECT <include refid="columns"/>
+	   FROM t_sys_user where account = #{account}
+    </select>
+    
+	
+</mapper>
+

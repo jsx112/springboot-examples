@@ -19,7 +19,7 @@
         <quartz.version>2.2.3</quartz.version>
         <alibaba.druid.version>1.0.29</alibaba.druid.version>
         <sharding.jdbc.version>1.4.0</sharding.jdbc.version>
-        <swagger.version>2.4.0</swagger.version>
+        <swagger.version>2.7.0</swagger.version>
 
     </properties>
 
@@ -121,7 +121,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.5</version>
         </dependency>
-        <!-- shiro spring. -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring</artifactId>

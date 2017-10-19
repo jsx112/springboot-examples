@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
- *
+ * 去掉对数据源和jpa的依赖
  * @author jiasx
  * @create 2017-09-15 11:03
  **/

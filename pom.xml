@@ -23,5 +23,8 @@
         <module>springboot-https</module>
         <module>springboot-demo</module>
         <module>springboot-rabbitmq</module>
+        <module>springboot-rest-template</module>
+        <module>springboot-okhttp</module>
+        <module>springboot-mongodb</module>
     </modules>
 </project>

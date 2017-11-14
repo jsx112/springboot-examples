@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 @SpringBootApplication
 @ServletComponentScan
 @EnableScheduling
+@ComponentScan(basePackages={"com.springboot.swagger","base"})
 public class SwaggerApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx =  SpringApplication.run(SwaggerApplication.class, args);

@@ -26,5 +26,6 @@
         <module>springboot-rest-template</module>
         <module>springboot-okhttp</module>
         <module>springboot-mongodb</module>
+        <module>springboot-convertmsg</module>
     </modules>
 </project>

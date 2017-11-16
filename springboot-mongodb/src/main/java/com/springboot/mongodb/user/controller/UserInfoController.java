@@ -71,10 +71,10 @@ public class UserInfoController extends BaseController {
     public List<UserInfo> findGroupCount(PageQuery page) {
 
         // 返回的字段
-        ProjectionOperation projectionOperation = Aggregation.project("userId","account", "password","accountNum");
+        ProjectionOperation projectionOperation = Aggregation.project("account","accountNum");
 
         // 分组操作，对每个分组总条数进行统计
-        GroupOperation groupOperation = Aggregation.group("userId","account", "password").sum("account").as("accountNum");
+        GroupOperation groupOperation = Aggregation.group("account").count().as("accountNum");
 //        // 分页操作，控制分页从哪开始
 //        SkipOperation skipOperation = Aggregation.skip(page.getStartRow());
 //        // 分页操作，控制分页取得记录数

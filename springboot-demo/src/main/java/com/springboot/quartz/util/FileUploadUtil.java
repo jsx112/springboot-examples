@@ -56,14 +56,14 @@ public class FileUploadUtil {
              */
             int status = client.executeMethod(postMethod);
             if (status == HttpStatus.SC_OK){
-                String result = postMethod.getResponseBodyAsString();  /** 上传到服务器 返回结果格式={result:"",url:"",msg:""} */
+                String result = postMethod.getResponseBodyAsString();  /** 上传到服务器 返回结果格式={result:"",util:"",msg:""} */
                 logger.info("文件上传结果：" + result);  //打印文件上传结果到日志
 
                 if (result != null && !result.trim().equals("")){
                     Map resultMap = objectMapper.readValue(result,Map.class);   // 解析返回信息
                     String code = resultMap.get("result").toString();       // 返回结果：0表示成功，其他表示失败
                     if ("0".equals(code)) {
-                        return resultMap.get("url").toString();  //上传成功时，返回文件url，此时msg=null
+                        return resultMap.get("util").toString();  //上传成功时，返回文件url，此时msg=null
                     }else{
                         logger.error("" + resultMap.get("msg"));      //上传失败时，打印提示信息，此时url=null
                         return null;

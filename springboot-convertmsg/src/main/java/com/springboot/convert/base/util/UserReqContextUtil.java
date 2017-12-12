@@ -89,7 +89,7 @@ public class UserReqContextUtil {
     /**
      * 获取请求的requestBody
      */
-    public static String getRequestBody(){
+    public static Object getRequestBody(){
     	return reqContextLocal.get().getRequestBody();
     }
 
@@ -119,7 +119,7 @@ public class UserReqContextUtil {
         /**
          * 用户信息
          **/
-        private String requestBody;
+        private Object requestBody;
 
     }
 }

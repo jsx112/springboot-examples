@@ -75,14 +75,6 @@ public class UserInfoController extends BaseController {
 
         // 分组操作，对每个分组总条数进行统计
         GroupOperation groupOperation = Aggregation.group("account").count().as("accountNum");
-//        // 分页操作，控制分页从哪开始
-//        SkipOperation skipOperation = Aggregation.skip(page.getStartRow());
-//        // 分页操作，控制分页取得记录数
-//        LimitOperation limitOperation = Aggregation.limit(page.getPageSize());
-//        // 组合条件
-//        Aggregation aggregation = Aggregation.newAggregation(projectionOperation, groupOperation, skipOperation, limitOperation);
-
-//        AggregationOperation aggregationOperation =Aggregation.match( Criteria.where("account").is("1222333"));
         // 组合条件
         Aggregation aggregation = Aggregation.newAggregation(projectionOperation, groupOperation );
         // 执行操作

@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
  * 主程序启动类
  */
 @SpringBootApplication
-@ServletComponentScan
 @EnableScheduling
 @ComponentScan(basePackages={"com.springboot.swagger","base"})
 public class SwaggerApplication {

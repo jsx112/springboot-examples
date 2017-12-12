@@ -4,10 +4,8 @@ package com.springboot.convert.controller;/**
 
 import com.springboot.convert.base.controller.BaseController;
 import com.springboot.convert.base.entity.UserInfo;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.springboot.convert.base.util.UserReqContextUtil;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -19,7 +17,7 @@ import java.util.Date;
  **/
 @RestController
 @RequestMapping("/json")
-public class JsonController extends BaseController {
+public class JsonController extends BaseController<UserInfo> {
 
 
 
@@ -28,6 +26,16 @@ public class JsonController extends BaseController {
         UserInfo userInfo = new UserInfo();
         userInfo.setAccount("111");
         userInfo.setPhone(json);
+        userInfo.setCreateTime(new Date());
+        return userInfo;
+    }
+
+
+    @PostMapping(value = "/get1")
+    public UserInfo get1(@RequestParam String user) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setAccount("111");
+        userInfo.setPhone(UserReqContextUtil.getRequestBody() +user);
         userInfo.setCreateTime(new Date());
         return userInfo;
     }

@@ -59,8 +59,8 @@ public class SysPermission extends BaseEntry{
 	private String resourceType;
 	
 	
-	/** url*/
-	@Column(name = "url")
+	/** util*/
+	@Column(name = "util")
 	@ApiModelProperty(value="url地址" ,dataType="String")
 	private String url;
 	
@@ -137,7 +137,7 @@ public class SysPermission extends BaseEntry{
 			
 	
 	/**
-     * url get方法
+     * util get方法
      * @return 获取url
      */
 	public String getUrl() {
@@ -145,8 +145,8 @@ public class SysPermission extends BaseEntry{
 	}
 	
 	/**
-     * url set方法
-     * @param url url
+     * util set方法
+     * @param url util
      */
 	public void setUrl(String url) {
 		this.url = url;

@@ -26,7 +26,7 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
      */
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.clear();
+//        converters.clear();
         converters.add(jsonMessageConverter());
     }
 

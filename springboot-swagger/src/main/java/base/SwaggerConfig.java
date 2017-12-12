@@ -75,7 +75,7 @@ public class SwaggerConfig   extends WebMvcConfigurerAdapter {
                 .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))//根据注解去过滤接口
                 .paths(Predicates.or(PathSelectors.regex("/api/.*")))//通过路径的方式过滤的接口
                 .build()
-                .apiInfo(testApiInfo());
+                .apiInfo(apiInfo());
         ;
         return docket;
     }
@@ -95,29 +95,19 @@ public class SwaggerConfig   extends WebMvcConfigurerAdapter {
                 .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))//根据注解去过滤接口
                 .paths(Predicates.or(PathSelectors.regex("/demo/.*")))//过滤的接口
                 .build()
-                .apiInfo(demoApiInfo());
+                .apiInfo(apiInfo());
     }
 
-    private ApiInfo testApiInfo() {
-        ApiInfo apiInfo = new ApiInfo("Test相关接口",//大标题
-                "Test相关接口，主要用于测试.",//小标题
-                "1.0",//版本
-                "http://baidu.com",
-                new Contact("测试人", "", ""),//作者
-                "一只小蚂蚁",//链接显示文字
-                "http://baidu.com"//网站链接
-        );
-        return apiInfo;
-    }
 
-    private ApiInfo demoApiInfo() {
-        ApiInfo apiInfo = new ApiInfo("Demo相关接口",//大标题
-                "Demo相关接口，主要用于demo演示.",//小标题
-                "1.0",//版本
-                "http://baidu.com",
-                new Contact("演示人", "", ""),//作者
-                "一只小蚂蚁",//链接显示文字
-                "http://baidu.com"//网站链接
+    private ApiInfo apiInfo() {
+        ApiInfo apiInfo = new ApiInfo("短链接平台相关接口",
+                "短链接平台相关接口.",
+                "1.0",
+                "http://shorturl.com",
+                new Contact("", "", ""),
+                "华海乐盈",
+                "http://shorturl.com",
+                new ArrayList<>()
         );
         return apiInfo;
     }

@@ -30,23 +30,23 @@ public class JsonMessageConverter extends MappingJackson2HttpMessageConverter {
         objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));    //日期统一格式化
         super.init(objectMapper);
     }
-
-    @Override
-    public Object read(Type type, Class<?> contextClass, HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
-        if("java.lang.String".equals(((Class) type).getName())){
-           return inputStream2String(inputMessage.getBody());
-        }
-        return super.read(type, contextClass, inputMessage);
-    }
-
-    public   static   String   inputStream2String(InputStream is)   throws   IOException{
-        ByteArrayOutputStream baos   =   new   ByteArrayOutputStream();
-        int   i=-1;
-        while((i=is.read())!=-1){
-            baos.write(i);
-        }
-        return   baos.toString();
-    }
+//
+//    @Override
+//    public Object read(Type type, Class<?> contextClass, HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
+//        if("java.lang.String".equals(((Class) type).getName())){
+//           return inputStream2String(inputMessage.getBody());
+//        }
+//        return super.read(type, contextClass, inputMessage);
+//    }
+//
+//    public   static   String   inputStream2String(InputStream is)   throws   IOException{
+//        ByteArrayOutputStream baos   =   new   ByteArrayOutputStream();
+//        int   i=-1;
+//        while((i=is.read())!=-1){
+//            baos.write(i);
+//        }
+//        return   baos.toString();
+//    }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override

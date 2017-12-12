@@ -1,6 +1,7 @@
 package com.springboot.convert.base.controller;
 
 import com.springboot.convert.base.config.convert.DateEditor;
+import com.springboot.convert.base.entity.ReqEntity;
 import com.springboot.convert.base.entity.UserInfo;
 import com.springboot.convert.base.enums.CodeMsg;
 import com.springboot.convert.base.exception.BizException;
@@ -21,7 +22,7 @@ import java.util.Date;
 /**
  * Controller基类，适用当前应用场景：前后端分离，集成SSO，前端请求参数为JSON字符串形式（requestbody）
  */
-public class BaseController {
+public class BaseController<T> {
 
     public static final String SUCCESS = "success";
 
@@ -57,15 +58,15 @@ public class BaseController {
      */
     @SuppressWarnings("rawtypes")
     @ModelAttribute
-    public void getToken(@RequestBody String json, HttpServletRequest request) {
-        if(StringUtils.isEmpty(json)){
+    public void getToken(@RequestBody ReqEntity<T> reqEntity, HttpServletRequest request) {
+        if(StringUtils.isEmpty(reqEntity.getToken())){
             throw new BizException(CodeMsg.token_not_blank);
         }
         UserReqContextUtil.UserReqContext userReqContext = new UserReqContextUtil.UserReqContext();
         userReqContext.setUserInfo(new UserInfo());
-        userReqContext.setToken(json);
+        userReqContext.setToken(reqEntity.getToken());
         userReqContext.setRequestUri(request.getRequestURI());
-        userReqContext.setRequestBody(json);
+        userReqContext.setRequestBody(reqEntity.getBody());
         UserReqContextUtil.set(userReqContext);
     }
 

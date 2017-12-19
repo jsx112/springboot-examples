@@ -43,5 +43,7 @@
         <module>springboot-short-url</module>
         <module>springboot-jpa</module>
         <module>springboot-sitemesh</module>
+        <module>springboot-kafka</module>
+        <module>springboot-mutidatasource</module>
     </modules>
 </project>
